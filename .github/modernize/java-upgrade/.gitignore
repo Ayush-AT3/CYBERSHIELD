@@ -1,0 +1,22 @@
+# Maven
+target/
+
+# IDE
+.vscode/
+.idea/
+*.iml
+
+# Environment / secrets
+.env
+.env.*
+
+# Logs
+*.log
+
+# Database files
+*.mv.db
+*.trace.db
+
+# OS files
+.DS_Store
+Thumbs.db
