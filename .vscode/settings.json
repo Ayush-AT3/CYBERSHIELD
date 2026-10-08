@@ -1,0 +1,12 @@
+{
+    "java.configuration.runtimes": [
+        {
+            "name": "JavaSE-17",
+            "path": "C:\\Program Files\\Eclipse Adoptium\\jdk-17.0.20.101-hotspot",
+            "default": true
+        }
+    ],
+    "maven.executable.path": "C:\\Users\\USER\\.gemini\\antigravity\\scratch\\maven\\apache-maven-3.9.6\\bin\\mvn.cmd",
+    "java.jdt.ls.vmargs": "-XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx2G -Xms100m",
+    "java.compile.nullAnalysis.mode": "automatic"
+}

@@ -1,0 +1,6 @@
+com\cybershield\entity\ThreatIndicatorEntity.class
+com\cybershield\service\database\DatabaseService.class
+com\cybershield\entity\KeywordEntity.class
+com\cybershield\repository\ScanRecordRepository.class
+com\cybershield\repository\KeywordRepository.class
+com\cybershield\entity\ScanRecordEntity.class

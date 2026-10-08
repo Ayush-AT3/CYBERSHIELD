@@ -1,0 +1,28 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Run CyberShield (Spring Boot)",
+            "request": "launch",
+            "mainClass": "com.cybershield.CyberShieldApplication",
+            "projectName": "cybershield-phishing-detection",
+            "serverReadyAction": {
+                "pattern": "Started CyberShieldApplication",
+                "uriFormat": "http://localhost:8085/",
+                "action": "openExternally"
+            }
+        },
+        {
+            "type": "java",
+            "name": "Run CyberShield (Auto)",
+            "request": "launch",
+            "mainClass": "com.cybershield.CyberShieldApplication",
+            "serverReadyAction": {
+                "pattern": "Started CyberShieldApplication",
+                "uriFormat": "http://localhost:8085/",
+                "action": "openExternally"
+            }
+        }
+    ]
+}
